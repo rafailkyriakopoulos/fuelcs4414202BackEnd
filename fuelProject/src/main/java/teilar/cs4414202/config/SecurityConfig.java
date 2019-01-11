@@ -48,7 +48,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET,"/gasstations/**").permitAll()
                 .antMatchers(HttpMethod.GET,"/statistics").permitAll()
                 .antMatchers(HttpMethod.GET,"/priceData/fuelTypes").permitAll()
+<<<<<<< HEAD
                 .antMatchers(HttpMethod.GET,"/priceData/*").permitAll()
+=======
+>>>>>>> branch 'master' of https://github.com/rafailkyriakopoulos/fuelcs4414202BackEnd.git
                 .antMatchers("/orders/**").permitAll()
                 .anyRequest().authenticated()
             .and()
