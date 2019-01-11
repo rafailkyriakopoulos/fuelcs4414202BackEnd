@@ -16,14 +16,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name="gasstations")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class GasStation {
 	
 	@Id
@@ -72,7 +72,7 @@ public class GasStation {
 	@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="username")
 	@JsonIdentityReference(alwaysAsId=true)
 	private User user;
-	@OneToMany(mappedBy="gasStation", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="gasStation", cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	private List<PriceData> priceData;
 	
 	
@@ -81,12 +81,12 @@ public class GasStation {
 	}
 	
 	
-	public List<PriceData> getPricesData() {
+	public List<PriceData> getPriceData() {
 		return priceData;
 	}
 
 
-	public void setPricesData(List<PriceData> pricesData) {
+	public void setPriceData(List<PriceData> pricesData) {
 		this.priceData = pricesData;
 	}
 

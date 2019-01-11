@@ -17,7 +17,7 @@ public class GeneralStatisticsController {
 	
 	//Πλήθος πρατηρίων (ακέραιος), μέγιστη, ελάχιστη και μέση τιμή ανά lt
 	@GetMapping("/statistics")
-	public List<GeneralStatisticsDTO> getGeneralStatistics(){
+	public GeneralStatisticsDTO getGeneralStatistics(){
 		return generalStatisticsService.getStatistics();
 		
 	}

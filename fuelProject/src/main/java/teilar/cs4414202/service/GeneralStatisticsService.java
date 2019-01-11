@@ -13,7 +13,7 @@ public class GeneralStatisticsService {
 	@Autowired
 	private GasStationRepository gasStationRepository;
 	
-	public List<GeneralStatisticsDTO> getStatistics(){
+	public GeneralStatisticsDTO getStatistics(){
 		return gasStationRepository.getStatistics();
 	}
 

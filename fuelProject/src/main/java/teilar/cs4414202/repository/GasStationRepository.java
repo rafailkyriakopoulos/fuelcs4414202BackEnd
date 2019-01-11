@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import teilar.cs4414202.model.GasStation;
+import teilar.cs4414202.model.User;
 import teilar.cs4414202.repository.dto.GeneralStatisticsDTO;
 
 public interface GasStationRepository extends CrudRepository<GasStation, Long> {
@@ -17,5 +18,10 @@ public interface GasStationRepository extends CrudRepository<GasStation, Long> {
 	@Query(value="select count(gasstations.gasStationID) as allGasStations,avgPrice,minPrice,maxPrice from gasstations, \n" + 
 			"(SELECT AVG(pricedata.fuelPrice) as avgPrice,min(pricedata.fuelPrice) as minPrice,max(pricedata.fuelPrice)as maxPrice from pricedata) p",
 			nativeQuery=true)
-	List<GeneralStatisticsDTO> getStatistics();
+	GeneralStatisticsDTO getStatistics();
+	
+	boolean existsByUser(User user);
+	
+	@Query("Select u from GasStation g JOIN  g.user u  where g.gasStationID = ?1")
+	User FindUserFromGasStationID(Long gasStationId);
 }
