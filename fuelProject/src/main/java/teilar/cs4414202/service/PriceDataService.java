@@ -26,13 +26,12 @@ public class PriceDataService {
 	public List<FuelTypeDTO> getFuelTypes() {
 		return priceDataRepository.getFuelTypes();
 	}
-<<<<<<< HEAD
+
 	public PriceData getPriceDataById(Long productID) {
 		return priceDataRepository.findById(productID).orElseThrow(()->new ResourceNotFoundException("PriceData", "productID",productID));
-=======
+
 	public PriceData getPriceDataById(Long priceDataId) {
 		return priceDataRepository.findById(priceDataId).orElseThrow(()->new ResourceNotFoundException("PriceData", "priceData",priceDataId));
->>>>>>> branch 'master' of https://github.com/rafailkyriakopoulos/fuelcs4414202BackEnd.git
 	}
 	
 }
