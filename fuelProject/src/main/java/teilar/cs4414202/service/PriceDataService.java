@@ -29,9 +29,6 @@ public class PriceDataService {
 
 	public PriceData getPriceDataById(Long productID) {
 		return priceDataRepository.findById(productID).orElseThrow(()->new ResourceNotFoundException("PriceData", "productID",productID));
-
-	public PriceData getPriceDataById(Long priceDataId) {
-		return priceDataRepository.findById(priceDataId).orElseThrow(()->new ResourceNotFoundException("PriceData", "priceData",priceDataId));
 	}
 	
 }
